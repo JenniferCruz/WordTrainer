@@ -1,0 +1,17 @@
+
+Play with a set of words in selection mode and see results
+    - The user finished the game and see percent
+    - Responds a question
+
+
+Icebox:
+    See the questions you got wrong
+    User first screen, where he/she sees all the decks.
+    Choose the kind of test. For example if I only want to study from German to English, or mixed.
+    Types of questions: Writing, Multiple selection, Complete?, Testing of Synonyms?
+    Turn off kinds of questions for a test (I.e Turning off multiple selection)
+    When The user leaves the game in the middle of it.
+
+
+Architectural Constraints:
+- We should be able to play a test offline (it should be downloaded at the beginning)
