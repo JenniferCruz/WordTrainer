@@ -1,7 +1,7 @@
 //A user responds 3 questions and gets them all right
 export function allCorrectAnswers(user) {
   let questions = [
-    {content: "Dog", answer: "Der Hund"},
+    {content: "Car", answer: "Das Auto"},
     {content: "Cat", answer: "Die Katze"},
     {content: "House", answer: "Das Haus"},
   ];

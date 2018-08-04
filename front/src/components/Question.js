@@ -15,12 +15,12 @@ export default class Question extends Component {
   }
 
   render() {
-    const {remainingQuestions, totalQuestions, question} = this.props
+    const {remainingQuestions, totalQuestions, currentQuestion} = this.props
 
     return <form>
       <h3 className="questions-count">Remaining questions: {`${remainingQuestions}/${totalQuestions}`}</h3>
       <strong className="question-content">
-        {question.content}
+        {currentQuestion.content}
       </strong>
       <input className="user-response-input" value={this.state.userResponse} onChange={this.handleChange.bind(this)}
              type="text"/>

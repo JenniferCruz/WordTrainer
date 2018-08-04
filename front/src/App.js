@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {compose, createStore} from "redux";
+import {compose, createStore, applyMiddleware} from "redux";
 import {takeTestReducer} from "./reducer";
 import {Provider} from "react-redux";
 import Quiz from "./components/Quiz";
+import {takeQuizMiddleware} from "./middleware/TakeQuizMiddleware";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(takeTestReducer, composeEnhancers());
+const store = createStore(takeTestReducer, composeEnhancers(), applyMiddleware(takeQuizMiddleware));
 
 class App extends Component {
   render() {
