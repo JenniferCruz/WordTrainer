@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class TranslationController {
 
     private static int id = 0;
-    private final List<Translation> translations = new ArrayList<>();
 
     @RequestMapping("/translations")
     public List<Translation> translations() {
+        List<Translation> translations = new ArrayList<>();
         translations.add(createTranslation("der Hund", "dog", "Zum Beispiel"));
         translations.add(createTranslation("die Katze", "cat", "Meow"));
         translations.add(createTranslation("das Haus", "house", "Weiss"));
         translations.add(createTranslation("gehen", "to go", "verbe"));
-        return this.translations;
+        return translations;
     }
 
     private Translation createTranslation(String de, String en, String ex) {
