@@ -1,11 +1,7 @@
-import TakeQuiz from "../domain/TakeQuiz";
+import TakeQuizUseCase from "../domain/TakeQuizUseCase";
 import {useCaseMiddlewareBuilder} from "./UseCaseMiddlewareBuilder";
 
-export let takeQuizUseCase = TakeQuiz( {questions: [
-    {content: "Dog", answer: "Der Hund"},
-    {content: "Cat", answer: "Die Katze"},
-    {content: "House", answer: "Das Haus"},
-  ]});
+export let takeQuizUseCase = TakeQuizUseCase();
 
 export function takeQuizMiddleware() {
   return useCaseMiddlewareBuilder( takeQuizUseCase, 'Quiz' )

@@ -13,9 +13,11 @@ Enzyme.configure({ adapter: new Adapter() });
 
 class UIQuizTest implements UserJourney {
   initialize(questions) {
-    takeQuizUseCase.questions = questions;
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
     this.questions = questions
+
+    takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
+    this.takeQuizUseCase = takeQuizUseCase;
     this.component = mount(
       <Provider store={this.store}>
         <Quiz />
@@ -24,12 +26,14 @@ class UIQuizTest implements UserJourney {
   }
 
   seesQuestion(questionContent){
-
+    //Looks like Enzyme has problems with rendering when there are async updates
+    this.component.update()
     expect(this.component.find(".question-content").text())
       .toContain(questionContent)
   }
 
   respondsWith(responseInput) {
+    this.component.update()
     this.component.find(".user-response-input")
       .simulate('change', {target: {value: responseInput}})
     this.component.find(".check-button").simulate('click')
@@ -41,20 +45,21 @@ class UIQuizTest implements UserJourney {
   }
 
   seesRemainingQuestions(remaining) {
+    this.component.update()
     expect(this.component.find(".questions-count").text())
       .toContain(`${remaining}/${this.questions.length}`)
   }
 
   seesResults(result) {
-    console.error("Failing here!")
+    this.component.update()
     expect(this.component.find(".test-results-content").text())
       .toContain(result + "%")
   }
 }
 
-it('UI Quiz: Play with a set of words in input mode and see results', () => {
-  allCorrectAnswers(new UIQuizTest())
-  someCorrectAnswers(new UIQuizTest())
+it('UI Quiz: Play with a set of words in input mode and see results', async () => {
+  await allCorrectAnswers(new UIQuizTest())
+  await someCorrectAnswers(new UIQuizTest())
 })
 
 

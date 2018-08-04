@@ -23,7 +23,7 @@ class Quiz extends Component{
 }
 
 function mapStateToProps (state) {
-  return state.quiz;
+  return state.quiz || {};
 }
 
 export default connect(mapStateToProps)(Quiz);

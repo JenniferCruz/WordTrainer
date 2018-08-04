@@ -2,14 +2,15 @@ import {Question, Translation, Text} from "./Question";
 import {TextResponseHandler} from "./ResponseHandler";
 import fetch from 'node-fetch';
 
-export default function TakeQuiz({questions}) {
+export default function TakeQuizUseCase() {
  return {
     currentQuestion: 0,
     correctCount: 0,
-    questions: questions || [],
-    startQuiz () {
+    questions: [],
+    async startQuiz () {
       this.currentQuestion = 0;
       this.correctCount = 0;
+      return this.questions = (await this.loadQuestions());
     },
     getView() {
       return {
@@ -33,9 +34,23 @@ export default function TakeQuiz({questions}) {
       return Math.ceil(100 * (this.correctCount / this.questions.length));
     },
     async loadQuestions() {
-      const response = await fetch('http://localhost:8080/translations');
-      const data = await response.json();
-      this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
+
+      let questions = [
+        {content: "Car", answer: "Das Auto"},
+        {content: "Cat", answer: "Die Katze"},
+        {content: "House", answer: "Das Haus"},
+      ];
+
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(questions)
+        }, 0)
+      });
+
+      // const response = await fetch('http://localhost:8080/translations');
+      // const data = await response.json();
+      // this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
+      // return this.questions;
     }
   }
 }

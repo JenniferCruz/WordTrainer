@@ -1,12 +1,12 @@
 import type {UserJourney} from "../testUtils/UserJourney.type";
-import TakeQuiz from "./TakeQuiz";
+import TakeQuizUseCase from "./TakeQuizUseCase";
 import {allCorrectAnswers, someCorrectAnswers} from "../testUtils/testCases";
 
 class TakeQuizTest implements UserJourney {
 
     initialize(questions) {
-      this.useCase = TakeQuiz({questions});
-      this.useCase.startQuiz();
+      this.useCase = TakeQuizUseCase();
+      this.useCase.questions = questions;
     }
 
     getView() {
@@ -42,10 +42,10 @@ it('Play with a set of words in input mode and see results', () => {
 })
 
 it('loads questions', async () => {
-  const takeQuiz = TakeQuiz({questions: []});
+  const takeQuiz = TakeQuizUseCase({questions: []});
   expect(takeQuiz.getView().remainingQuestions).toBe(0);
 
-  await takeQuiz.loadQuestions();
+  await takeQuiz.startQuiz();
 
   expect(takeQuiz.getView().remainingQuestions).toBeGreaterThan(0);
 })

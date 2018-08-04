@@ -1,8 +1,13 @@
+function updateUseCaseAction(useCaseName, useCase) {
+  return {type: `update${useCaseName}`, [useCaseName.toLowerCase()]: useCase.getView()};
+}
+
 export function useCaseMiddlewareBuilder(useCase, useCaseName) {
-  return next => async action => {
+  return next => action => {
     if (useCase[action.type]) {
-      useCase[action.type](action);
-      return next({type: `update${useCaseName}`, [useCaseName.toLowerCase()]: useCase.getView()});
+      const result = useCase[action.type](action);
+      if(result) result.then(() => next(updateUseCaseAction(useCaseName, useCase)))
+      else next(updateUseCaseAction(useCaseName, useCase))
     }
     return next(action)
   }

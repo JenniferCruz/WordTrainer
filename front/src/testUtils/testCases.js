@@ -1,5 +1,7 @@
 //A user responds 3 questions and gets them all right
-export function allCorrectAnswers(user) {
+import {waitForPendingPromises} from "./testUtils";
+
+export async function allCorrectAnswers(user) {
   let questions = [
     {content: "Car", answer: "Das Auto"},
     {content: "Cat", answer: "Die Katze"},
@@ -8,6 +10,9 @@ export function allCorrectAnswers(user) {
 
   user.initialize(questions)
 
+
+  await waitForPendingPromises()
+
   questions.forEach((q, i) => {
     user.seesRemainingQuestions(questions.length - i)
     user.seesAndResponds(q.content, q.answer)
@@ -15,13 +20,13 @@ export function allCorrectAnswers(user) {
   user.seesResults(100)
 }
 
-export function someCorrectAnswers(user) {
+export async function someCorrectAnswers(user) {
   let questions = [
     {content: "A Question", answer: "A Translation"},
     {content: "Another Question", answer: "Another Translation"}
   ]
-
   user.initialize(questions)
+  await waitForPendingPromises()
   user.seesAndResponds(questions[0].content, questions[0].answer)
   user.seesAndResponds(questions[1].content, "Wrong answer")
   user.seesResults(50)
