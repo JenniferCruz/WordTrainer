@@ -1,25 +1,14 @@
-import Quiz from "./Quiz";
 import React from "react";
-import {takeTestReducer} from "../reducer";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
 import type {UserJourney} from "../testUtils/UserJourney.type";
-import {
-  allCorrectAnswers,
-  allCorrectAnswersInMultipleChoice,
-  alternateMessage,
-  someCorrectAnswers
-} from "../testUtils/testCases";
-import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
-import {waitForPendingPromises} from "../testUtils/testUtils";
+import Quiz from "./Quiz";
 import {noQuestionsInQuiz} from "../testUtils/strings";
-import UIMultipleChoiceQuizTest from './UIMultipleChoiceQuizTest'
+import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
+import {takeTestReducer} from "../reducer";
 
-Enzyme.configure({ adapter: new Adapter() });
-
-class UIInputQuizTest implements UserJourney {
+export default class UIMultipleChoiceQuizTest implements UserJourney {
   initialize(questions) {
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
     this.questions = questions
@@ -27,13 +16,12 @@ class UIInputQuizTest implements UserJourney {
     takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
     this.component = mount(
       <Provider store={this.store}>
-        <Quiz />
-      </Provider>
-    )
+         <Quiz />
+       </Provider>
+     )
   }
 
   seesQuestion(questionContent){
-    //Looks like Enzyme has problems with rendering when there are async updates
     this.component.update()
     expect(this.component.find(".question-content").text())
       .toContain(questionContent)
@@ -57,6 +45,13 @@ class UIInputQuizTest implements UserJourney {
       .toContain(`${remaining}/${this.questions.length}`)
   }
 
+  seesMultipleAnswerChoices() {
+    this.component.update()
+    const currentQuestion = this.component.find(".answer-option");
+    expect(currentQuestion.children().length).toBeGreaterThanOrEqual(3);
+    expect(currentQuestion.first().text()).toContain(currentQuestion.answer)
+  }
+
   seesResults(result) {
     this.component.update()
     expect(this.component.find(".test-results-content").text())
@@ -70,26 +65,3 @@ class UIInputQuizTest implements UserJourney {
     expect(message.length).toBeGreaterThan(0)
   }
 }
-
-it('UI Quiz: Play with a set of words in input mode and see results', async () => {
-  await allCorrectAnswers(new UIInputQuizTest())
-  await someCorrectAnswers(new UIInputQuizTest())
-})
-
-it('UI Quiz: Plays words in multiple choice mode and sees results', async () => {
-  await allCorrectAnswersInMultipleChoice(new UIMultipleChoiceQuizTest())
-})
-
-it('UI Quiz: Shows relevant message if no questions are available', async () => {
-  const user = new UIInputQuizTest();
-  let questions = []
-  user.initialize(questions)
-  await waitForPendingPromises()
-  user.seesNoQuestionsMessage()
-})
-
-
-
-
-
-

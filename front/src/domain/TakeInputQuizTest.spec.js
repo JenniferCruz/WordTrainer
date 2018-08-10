@@ -2,7 +2,7 @@ import type {UserJourney} from "../testUtils/UserJourney.type";
 import TakeQuizUseCase from "./TakeQuizUseCase";
 import {allCorrectAnswers, someCorrectAnswers} from "../testUtils/testCases";
 
-class TakeQuizTest implements UserJourney {
+class TakeInputQuizTest implements UserJourney {
 
     initialize(questions) {
       this.useCase = TakeQuizUseCase();
@@ -37,8 +37,8 @@ class TakeQuizTest implements UserJourney {
 }
 
 it('Play with a set of words in input mode and see results', async () => {
-  await allCorrectAnswers(new TakeQuizTest())
-  await someCorrectAnswers(new TakeQuizTest())
+  await allCorrectAnswers(new TakeInputQuizTest())
+  await someCorrectAnswers(new TakeInputQuizTest())
 })
 
 it('loads questions', async () => {
