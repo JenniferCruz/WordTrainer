@@ -4,8 +4,14 @@ import TakeQuizUseCase from "./TakeQuizUseCase";
 
 class TakeMultipleChoiceQuizUseCase implements UserJourney {
   initialize(questions) {
-    this.useCase = TakeQuizUseCase();
-    this.useCase.questions = questions;
+    this.useCase = TakeQuizUseCase("multiple");
+    this.useCase.questions = questions.map((t, i) => {
+      const options = [t.answer]
+      const len = questions.length
+      options.push(questions[(i+1)%len].answer)
+      options.push(questions[(i+2)%len].answer)
+      return {content: t.content, answer: t.answer, options: options}
+    });
   }
 
   seesRemainingQuestions(remaining) {
@@ -33,7 +39,7 @@ class TakeMultipleChoiceQuizUseCase implements UserJourney {
   }
 
   seesResults(result) {
-    expect(this.getView().result).toBe(result)
+    expect(this.useCase.getView().result).toBe(result)
   }
 }
 

@@ -7,10 +7,10 @@ export default function TakeQuizUseCase() {
     currentQuestion: 0,
     correctCount: 0,
     questions: [],
-    async startQuiz () {
+    async startQuiz (type) {
       this.currentQuestion = 0;
       this.correctCount = 0;
-      return this.questions = (await this.loadQuestions());
+      return this.questions = (await this.loadQuestions(type));
     },
     getView() {
       return {
@@ -33,7 +33,7 @@ export default function TakeQuizUseCase() {
     getResult ()  {
       return Math.ceil(100 * (this.correctCount / this.questions.length));
     },
-    async loadQuestions() {
+    async loadQuestions(type) {
 
       // let questions = [
       //   {content: "Car", answer: "Das Auto"},
@@ -49,7 +49,11 @@ export default function TakeQuizUseCase() {
 
       const response = await fetch('http://localhost:8080/translations');
       const data = await response.json();
-      this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
+      if (type === "multiple") {
+        // TODO: add options
+        this.questions = data.map(t => ({content: t.words.de, answer: t.words.en, options: []}));
+      } else
+        this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
       return this.questions;
     }
   }

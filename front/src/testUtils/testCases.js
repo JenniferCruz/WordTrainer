@@ -46,7 +46,7 @@ export async function allCorrectAnswersInMultipleChoice(user) {
   questions.forEach((q, i) => {
     user.seesRemainingQuestions(questions.length - i)
     user.seesMultipleAnswerChoices()
-    user.seesAndResponds(q[0].content, q[0].answer)
+    user.seesAndResponds(q.content, q.answer)
   })
 
   user.seesResults(100)
