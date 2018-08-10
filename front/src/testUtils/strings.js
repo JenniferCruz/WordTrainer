@@ -1,0 +1,1 @@
+export const noQuestionsInQuiz = "There are no questions in this quiz! Try uploading some subtitles first.";

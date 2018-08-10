@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Question from './Question'
+import {noQuestionsInQuiz} from "../testUtils/strings";
 
 class Quiz extends Component{
   componentDidMount() {
@@ -12,12 +13,18 @@ class Quiz extends Component{
   }
 
   render() {
-    const {remainingQuestions} = this.props;
+    const {remainingQuestions, totalQuestions} = this.props;
+
+    if (totalQuestions === 0)
+      return <div>
+        <h2 className="empty-test-message">{noQuestionsInQuiz}</h2>
+      </div>
 
     return <div>
-      {remainingQuestions > 0 ?
-        <Question {...this.props} onUserResponse={this.handleSubmit.bind(this)} />
-        : <h2 className="test-results-content">Finished! {this.props.result}%</h2>}
+      { remainingQuestions > 0
+          ? <Question {...this.props} onUserResponse={this.handleSubmit.bind(this)} />
+          : <h2 className="test-results-content">Finished! {this.props.result}%</h2>
+      }
     </div>
   }
 }

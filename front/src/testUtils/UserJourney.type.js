@@ -5,4 +5,5 @@ interface UserJourney {
   seesAndResponds(questionContent: String, responseInput: String): void
   seesRemainingQuestions(remaining: Number): void
   seesResults(result: String): void
+  seesNoQuestionsMessage(): void
 }

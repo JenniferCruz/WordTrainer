@@ -6,8 +6,11 @@ import {Provider} from "react-redux";
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import type {UserJourney} from "../testUtils/UserJourney.type";
-import {allCorrectAnswers, someCorrectAnswers} from "../testUtils/testCases";
+import {allCorrectAnswers, alternateMessage, someCorrectAnswers} from "../testUtils/testCases";
 import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
+import TakeQuizUseCase from "../domain/TakeQuizUseCase";
+import {waitForPendingPromises} from "../testUtils/testUtils";
+import {noQuestionsInQuiz} from "../testUtils/strings";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -55,12 +58,30 @@ class UIQuizTest implements UserJourney {
     expect(this.component.find(".test-results-content").text())
       .toContain(result + "%")
   }
+
+  seesNoQuestionsMessage() {
+    this.component.update()
+    const message = this.component.find(".empty-test-message").text()
+    expect(message).toContain(noQuestionsInQuiz)
+    expect(message.length).toBeGreaterThan(0)
+  }
 }
 
 it('UI Quiz: Play with a set of words in input mode and see results', async () => {
   await allCorrectAnswers(new UIQuizTest())
   await someCorrectAnswers(new UIQuizTest())
 })
+
+it('UI Quiz: Shows relevant message if no questions are available', async () => {
+  const user = new UIQuizTest();
+  let questions = []
+  user.initialize(questions)
+  await waitForPendingPromises()
+  user.seesNoQuestionsMessage()
+})
+
+
+
 
 
 

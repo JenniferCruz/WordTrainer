@@ -35,22 +35,22 @@ export default function TakeQuizUseCase() {
     },
     async loadQuestions() {
 
-      let questions = [
-        {content: "Car", answer: "Das Auto"},
-        {content: "Cat", answer: "Die Katze"},
-        {content: "House", answer: "Das Haus"},
-      ];
+      // let questions = [
+      //   {content: "Car", answer: "Das Auto"},
+      //   {content: "Cat", answer: "Die Katze"},
+      //   {content: "House", answer: "Das Haus"},
+      // ];
+      //
+      // return new Promise(resolve => {
+      //   setTimeout(() => {
+      //     resolve(questions)
+      //   }, 0)
+      // });
 
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(questions)
-        }, 0)
-      });
-
-      // const response = await fetch('http://localhost:8080/translations');
-      // const data = await response.json();
-      // this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
-      // return this.questions;
+      const response = await fetch('http://localhost:8080/translations');
+      const data = await response.json();
+      this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
+      return this.questions;
     }
   }
 }
