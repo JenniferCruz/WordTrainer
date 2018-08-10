@@ -6,4 +6,5 @@ interface UserJourney {
   seesRemainingQuestions(remaining: Number): void
   seesResults(result: String): void
   seesNoQuestionsMessage(): void
+  seesMultipleAnswerChoices(): []
 }

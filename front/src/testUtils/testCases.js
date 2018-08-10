@@ -31,3 +31,23 @@ export async function someCorrectAnswers(user) {
   user.seesAndResponds(questions[1].content, "Wrong answer")
   user.seesResults(50)
 }
+
+
+export async function allCorrectAnswersInMultipleChoice(user) {
+  let questions = [
+    {content: "Car", answer: "Das Auto"},
+    {content: "Cat", answer: "Die Katze"},
+    {content: "House", answer: "Das Haus"},
+  ];
+
+  user.initialize(questions)
+  await waitForPendingPromises()
+
+  questions.forEach((q, i) => {
+    user.seesRemainingQuestions(questions.length - i)
+    user.seesMultipleAnswerChoices()
+    user.seesAndResponds(q[0].content, q[0].answer)
+  })
+
+  user.seesResults(100)
+}

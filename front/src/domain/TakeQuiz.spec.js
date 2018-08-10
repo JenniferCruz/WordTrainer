@@ -36,9 +36,9 @@ class TakeQuizTest implements UserJourney {
     }
 }
 
-it('Play with a set of words in input mode and see results', () => {
-  allCorrectAnswers(new TakeQuizTest())
-  someCorrectAnswers(new TakeQuizTest())
+it('Play with a set of words in input mode and see results', async () => {
+  await allCorrectAnswers(new TakeQuizTest())
+  await someCorrectAnswers(new TakeQuizTest())
 })
 
 it('loads questions', async () => {
@@ -49,5 +49,3 @@ it('loads questions', async () => {
 
   expect(takeQuiz.getView().remainingQuestions).toBeGreaterThan(0);
 })
-
-
