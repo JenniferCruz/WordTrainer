@@ -3,10 +3,8 @@ import { MultipleChoiceResponseHandler, TextResponseHandler} from "./ResponseHan
 
 describe('Questions tests', () => {
 
-  const langFrom = 'en'
-  const langTo = 'de'
-  const textA = new Text('Red', langFrom)
-  const textB = new Text('Rot', langTo)
+  const textA = 'Red'
+  const textB = 'Rot'
   const translation = new Translation(textA, textB)
   const question = Question(translation)
 
@@ -15,13 +13,12 @@ describe('Questions tests', () => {
     expect(question.getConcept()).toBe(textA)
     const responseHandler = new TextResponseHandler(question);
 
-    expect(responseHandler.respond(textB.content)).toBe(true)
+    expect(responseHandler.respond(textB)).toBe(true)
     expect(responseHandler.respond('Gelb')).toBe(false)
-
   })
 
   it('User answers a Multiple Choice Question', () => {
-    const texts = [new Text('Gelb', 'de'), new Text('Blau', langTo)];
+    const texts = ['Gelb', 'Blau'];
     const responseHandler = new MultipleChoiceResponseHandler(texts, question, 'de');
 
     expect(responseHandler.getOptions()).toContain(textB)

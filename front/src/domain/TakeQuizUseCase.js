@@ -25,7 +25,7 @@ export default function TakeQuizUseCase() {
     },
     respond ({userResponse}) {
       const q = this.questions[this.currentQuestion];
-      const question = Question(new Translation(new Text(q.content, 'en'), new Text(q.answer, 'de')));
+      const question = Question(new Translation(q.content, q.answer));
       const responseHandler = new TextResponseHandler(question);
       if (responseHandler.respond(userResponse))
         this.correctCount++

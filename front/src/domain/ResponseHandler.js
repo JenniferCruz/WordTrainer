@@ -10,7 +10,7 @@ export class MultipleChoiceResponseHandler {
   }
 
   respond(i) {
-    return this.question.getAnswer().content === this.texts[i].content;
+    return this.question.getAnswer() === this.texts[i];
   }
 }
 
@@ -20,7 +20,7 @@ export class TextResponseHandler {
   }
 
   respond(text) {
-    return this.question.getAnswer().content === text;
+    return this.question.getAnswer() === text;
   }
 }
 
