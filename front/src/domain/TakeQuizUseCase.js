@@ -1,4 +1,4 @@
-import {Question, Translation, Text} from "./Question";
+import {Question, Translation} from "./Question";
 import {TextResponseHandler} from "./ResponseHandler";
 import fetch from 'node-fetch';
 
@@ -49,9 +49,10 @@ export default function TakeQuizUseCase() {
 
       const response = await fetch('http://localhost:8080/translations');
       const data = await response.json();
-      if (type === "multiple") {
+      // if (type === "multiple") {
+      if (true) {
         // TODO: add options
-        this.questions = data.map(t => ({content: t.words.de, answer: t.words.en, options: []}));
+        this.questions = data.map(t => ({content: t.words.de, answer: t.words.en, options: ['TEST-OPTION', t.words.en]}));
       } else
         this.questions = data.map(t => ({content: t.words.de, answer: t.words.en}));
       return this.questions;

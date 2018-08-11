@@ -43,6 +43,6 @@ class TakeMultipleChoiceQuizUseCase implements UserJourney {
   }
 }
 
-it('displays questions with multiple choices', async () => {
+it('tests with multiple choice questions', async () => {
   await allCorrectAnswersInMultipleChoice(new TakeMultipleChoiceQuizUseCase())
 })

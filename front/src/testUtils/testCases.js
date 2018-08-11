@@ -35,17 +35,16 @@ export async function someCorrectAnswers(user) {
 
 export async function allCorrectAnswersInMultipleChoice(user) {
   let questions = [
-    {content: "Car", answer: "Das Auto"},
-    {content: "Cat", answer: "Die Katze"},
-    {content: "House", answer: "Das Haus"},
+    {content: "to hurt", answer: "verletzen"},
+    {content: "to testify", answer: "aussagen"},
+    {content: "to move", answer: "ausziehen"},
   ];
-
   user.initialize(questions)
   await waitForPendingPromises()
 
   questions.forEach((q, i) => {
     user.seesRemainingQuestions(questions.length - i)
-    user.seesMultipleAnswerChoices()
+    user.seesMultipleAnswerChoices(q)
     user.seesAndResponds(q.content, q.answer)
   })
 

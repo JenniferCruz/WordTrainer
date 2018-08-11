@@ -9,7 +9,6 @@ import type {UserJourney} from "../testUtils/UserJourney.type";
 import {
   allCorrectAnswers,
   allCorrectAnswersInMultipleChoice,
-  alternateMessage,
   someCorrectAnswers
 } from "../testUtils/testCases";
 import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
@@ -87,9 +86,3 @@ it('UI Quiz: Shows relevant message if no questions are available', async () => 
   await waitForPendingPromises()
   user.seesNoQuestionsMessage()
 })
-
-
-
-
-
-

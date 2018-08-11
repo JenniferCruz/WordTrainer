@@ -9,11 +9,11 @@ import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddlew
 import {takeTestReducer} from "../reducer";
 
 export default class UIMultipleChoiceQuizTest implements UserJourney {
+
   initialize(questions) {
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
-    this.questions = questions
-
-    takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
+    this.questions = questions.map(q => ({...q, options: [q.answer, "wrong option"]}))
+    takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(this.questions), 0));
     this.component = mount(
       <Provider store={this.store}>
          <Quiz />
@@ -29,8 +29,11 @@ export default class UIMultipleChoiceQuizTest implements UserJourney {
 
   respondsWith(responseInput) {
     this.component.update()
-    this.component.find(".user-response-input")
-      .simulate('change', {target: {value: responseInput}})
+
+    const currentOptions = this.component.find(".user-response-option");
+    let selectThis = currentOptions.getElements().findIndex(opt => (opt.props.value === responseInput))
+
+    currentOptions.at(selectThis).simulate('change')
     this.component.find(".check-button").simulate('click')
   }
 
@@ -45,23 +48,18 @@ export default class UIMultipleChoiceQuizTest implements UserJourney {
       .toContain(`${remaining}/${this.questions.length}`)
   }
 
-  seesMultipleAnswerChoices() {
+  seesMultipleAnswerChoices(question) {
     this.component.update()
-    const currentQuestion = this.component.find(".answer-option");
-    expect(currentQuestion.children().length).toBeGreaterThanOrEqual(3);
-    expect(currentQuestion.first().text()).toContain(currentQuestion.answer)
+    const currentOptions = this.component.find(".user-response-option").getElements();
+    expect(currentOptions.length).toBeGreaterThanOrEqual(2);
+
+    const containsRightAnswer = currentOptions.findIndex(opt => (opt.props.value === question.answer)) >= 0
+    expect(containsRightAnswer).toBe(true)
   }
 
   seesResults(result) {
     this.component.update()
     expect(this.component.find(".test-results-content").text())
       .toContain(result + "%")
-  }
-
-  seesNoQuestionsMessage() {
-    this.component.update()
-    const message = this.component.find(".empty-test-message").text()
-    expect(message).toContain(noQuestionsInQuiz)
-    expect(message.length).toBeGreaterThan(0)
   }
 }
