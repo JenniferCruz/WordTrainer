@@ -9,6 +9,10 @@ export function Question(translation) {
   }
 }
 
+export function createQuestion(a, b) {
+  return Question(new Translation(a, b))
+}
+
 export class Translation {
   constructor(a: Text, b: Text) {
     this.a = a

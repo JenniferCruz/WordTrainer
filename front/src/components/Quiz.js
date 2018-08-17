@@ -5,7 +5,7 @@ import {noQuestionsInQuiz} from "../testUtils/strings";
 
 class Quiz extends Component{
   componentDidMount() {
-    this.props.dispatch({type:"startQuiz"});
+    this.props.dispatch({type:"startQuiz", quizType: this.props.type});
   }
   handleSubmit(userResponse) {
     this.props.dispatch({type:"respond", userResponse});
@@ -13,21 +13,22 @@ class Quiz extends Component{
   }
 
   render() {
-    const {remainingQuestions, totalQuestions} = this.props;
+    const { totalQuestions, isFinished } = this.props;
 
-    if (totalQuestions === 0)
+    if (!totalQuestions)
       return <div>
         <h2 className="empty-test-message">{noQuestionsInQuiz}</h2>
       </div>
 
     return <div>
-      { remainingQuestions > 0
-          ? <Question {...this.props} onUserResponse={this.handleSubmit.bind(this)} />
-          : <h2 className="test-results-content">Finished! {this.props.result}%</h2>
+      { isFinished
+          ? <h2 className="test-results-content">Finished! {this.props.result}%</h2>
+          : <Question {...this.props} onUserResponse={this.handleSubmit.bind(this)} />
       }
     </div>
   }
 }
+
 
 function mapStateToProps (state) {
   return state.quiz || {};

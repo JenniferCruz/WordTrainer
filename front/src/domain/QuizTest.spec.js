@@ -1,4 +1,12 @@
 import Quiz from "./Quiz";
+import { createQuestion } from "./Question";
+
+it('keeps currentQuestion as a valid number', () => {
+  const quiz = new Quiz([createQuestion("Car", "Das Auto"), createQuestion("he", "er")])
+  quiz.nextQuestion()
+  quiz.nextQuestion()
+  expect(quiz.currentQuestion).toBe(1)
+})
 
 it('completes with all correct answers', () =>
   assertQuizResults(100, questions))
@@ -17,15 +25,15 @@ it('completes with 30% correct answers', () => {
 
 
 const questions = [
-  {content: "Car", answer: "Das Auto"},
-  {content: "Cat", answer: "Die Katze"},
-  {content: "House", answer: "Das Haus"},
-  {content: "Apartment", answer: "Die Wohnung"},
-  {content: "Glass", answer: "Der Glass"},
-  {content: "Car", answer: "Das Auto"},
-  {content: "Cat", answer: "Die Katze"},
-  {content: "House", answer: "Das Haus"},
-  {content: "Apartment", answer: "Die Wohnung"},
+  createQuestion("Car", "Das Auto"),
+  createQuestion("Cat", "Die Katze"),
+  createQuestion("House", "Das Haus"),
+  createQuestion("Apartment", "Die Wohnung"),
+  createQuestion("Glass", "Der Glass"),
+  createQuestion("Car", "Das Auto"),
+  createQuestion("Cat", "Die Katze"),
+  createQuestion("House", "Das Haus"),
+  createQuestion("Apartment", "Die Wohnung")
 ]
 
 function assertQuizResults(expected, questions) {
@@ -35,7 +43,7 @@ function assertQuizResults(expected, questions) {
 
   questions.forEach((q, i) => {
     quiz.correctAnswer(i+1 <= expectedRightAnswers ?
-      q.answer : "wrong answer")
+      q.getAnswer() : "wrong answer")
     quiz.nextQuestion()
   })
 

@@ -10,7 +10,6 @@ export async function allCorrectAnswers(user) {
 
   user.initialize(questions)
 
-
   await waitForPendingPromises()
 
   questions.forEach((q, i) => {

@@ -11,12 +11,12 @@ export default class Quiz {
   }
 
   nextQuestion() {
-    this.currentQuestion++;
+    if (this.currentQuestion < this.questions.length - 1)
+      this.currentQuestion++;
   }
 
   correctAnswer(userResponse) {
-    const q = this.questions[this.currentQuestion];
-    const question = Question(new Translation(q.content, q.answer));
+    const question = this.questions[this.currentQuestion];
     const responseHandler = new TextResponseHandler(question);
     if (responseHandler.respond(userResponse))
       this.correctCount++

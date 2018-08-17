@@ -1,10 +1,9 @@
-import {UIInputQuizTest} from "./UIInputQuizTest";
 import {UIQuiz} from "./UIQuiz";
 
 export default class UIMultipleChoiceQuizTest extends UIQuiz {
 
   initialize(questions) {
-    super.initialize(questions.map(q => ({...q, options: [q.answer, "wrong option"]})))
+    super.initialize(questions, "multiple")
   }
 
   respondsWith(responseInput) {
