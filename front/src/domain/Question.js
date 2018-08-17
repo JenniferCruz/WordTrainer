@@ -1,10 +1,18 @@
+
 export function Question(translation) {
+  const questionOptions = [translation.b, 'TEST-OPTION']
   return {
     getConcept() {
       return translation.a
     },
     getAnswer() {
       return translation.b
+    },
+    getOptions() {
+      return questionOptions
+    },
+    isCorrect(userResponse) {
+      return userResponse === translation.b
     }
   }
 }

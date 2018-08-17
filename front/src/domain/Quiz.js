@@ -1,6 +1,3 @@
-import {Question, Translation} from "./Question";
-import {TextResponseHandler} from "./ResponseHandler";
-
 export default class Quiz {
   currentQuestion = 0
   correctCount = 0
@@ -16,13 +13,27 @@ export default class Quiz {
   }
 
   correctAnswer(userResponse) {
-    const question = this.questions[this.currentQuestion];
-    const responseHandler = new TextResponseHandler(question);
-    if (responseHandler.respond(userResponse))
+    if (this.getCurrentQuestion().isCorrect(userResponse))
       this.correctCount++
+  }
+
+  getCurrentQuestion() {
+    return this.questions[this.currentQuestion]
+  }
+
+  getTotalQuestions() {
+    return this.questions.length
+  }
+
+  getRemainingQuestions() {
+    return this.getTotalQuestions() - this.currentQuestion
   }
 
   getResult() {
     return Math.ceil(100 * (this.correctCount / this.questions.length));
+  }
+
+  isLastQuestion() {
+    return this.currentQuestion === this.questions.length - 1
   }
 }

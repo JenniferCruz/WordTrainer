@@ -1,5 +1,4 @@
 import { Question, Text, Translation } from './Question'
-import { MultipleChoiceResponseHandler, TextResponseHandler} from "./ResponseHandler"
 
 describe('Questions tests', () => {
 
@@ -11,21 +10,14 @@ describe('Questions tests', () => {
   it('User answers a Text Input Question', () => {
 
     expect(question.getConcept()).toBe(textA)
-    const responseHandler = new TextResponseHandler(question);
 
-    expect(responseHandler.respond(textB)).toBe(true)
-    expect(responseHandler.respond('Gelb')).toBe(false)
+    expect(question.isCorrect(textB)).toBe(true)
+    expect(question.isCorrect('Gelb')).toBe(false)
   })
 
   it('User answers a Multiple Choice Question', () => {
-    const texts = ['Gelb', 'Blau'];
-    const responseHandler = new MultipleChoiceResponseHandler(texts, question, 'de');
-
-    expect(responseHandler.getOptions()).toContain(textB)
-    expect(responseHandler.getOptions().length).toBe(3)
-
-    expect(responseHandler.respond(2)).toBe(true)
-    expect(responseHandler.respond(1)).toBe(false)
+    expect(question.getOptions()).toContain(textB)
+    expect(question.getOptions().length).toBeGreaterThanOrEqual(2)
   })
 })
 
