@@ -1,11 +1,10 @@
-import { Question, Text, Translation } from './Question'
+import {createQuestion, Question, Text, Translation} from './Question'
 
 describe('Questions tests', () => {
 
   const textA = 'Red'
   const textB = 'Rot'
-  const translation = new Translation(textA, textB)
-  const question = Question(translation)
+  const question = createQuestion(textA, textB)
 
   it('User answers a Text Input Question', () => {
 

@@ -5,6 +5,6 @@ export class UIInputQuizTest extends UIQuiz {
     this.component.update()
     this.component.find(".user-response-input")
       .simulate('change', {target: {value: responseInput}})
-    this.component.find(".check-button").simulate('click')
+    super.next()
   }
 }

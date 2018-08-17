@@ -6,7 +6,7 @@ import {noQuestionsInQuiz} from "../testUtils/strings";
 import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
 import Quiz from './Quiz'
 import simulateApp from '../testUtils/SimulateApp'
-import {Question, Translation} from "../domain/Question";
+import {createQuestion} from "../domain/Question";
 
 export class UIQuiz implements UserJourney {
 
@@ -14,8 +14,7 @@ export class UIQuiz implements UserJourney {
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
     this.questions = questions
 
-    questions = this.questions.map(q =>
-    Question(new Translation(q.content, q.answer)))
+    questions = this.questions.map(({content, answer}) => createQuestion(content, answer))
 
     takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
 
@@ -51,5 +50,9 @@ export class UIQuiz implements UserJourney {
     const message = this.component.find(".empty-test-message").text()
     expect(message).toContain(noQuestionsInQuiz)
     expect(message.length).toBeGreaterThan(0)
+  }
+
+  next() {
+    this.component.find("form").simulate('submit')
   }
 }

@@ -14,6 +14,7 @@ export default class UIMultipleChoiceQuizTest extends UIQuiz {
 
     currentOptions.at(selectThis).simulate('change')
     this.component.find(".check-button").simulate('click')
+    super.next()
   }
 
   seesMultipleAnswerChoices(question) {

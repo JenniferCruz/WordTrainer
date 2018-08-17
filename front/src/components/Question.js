@@ -10,13 +10,14 @@ export default class Question extends Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault()
     this.setState({"userResponse": ""});
     this.props.onUserResponse(this.state.userResponse)
   }
 
   render() {
     const {remainingQuestions, totalQuestions, currentQuestion, questionOptions} = this.props
-    return <form>
+    return <form onSubmit={this.handleSubmit.bind(this)}>
         <h3 className="questions-count">Remaining questions: {`${remainingQuestions}/${totalQuestions}`}</h3>
         <strong className="question-content">
           {currentQuestion.content}
@@ -33,9 +34,7 @@ export default class Question extends Component {
           : <input className="user-response-input" value={this.state.userResponse}
                    onChange={this.handleChange.bind(this)} type="text"/>
         }
-        <input type="button"
-             className="check-button"
-             value="Check" onClick={this.handleSubmit.bind(this)}/>
+        <input type="submit" className="check-button" value="Check"/>
       </form>
   }
 }

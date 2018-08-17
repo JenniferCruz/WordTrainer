@@ -1,5 +1,5 @@
 
-export function Question(translation) {
+function Question(translation) {
   const questionOptions = [translation.b, 'TEST-OPTION']
   return {
     getConcept() {
