@@ -1,6 +1,5 @@
 
-function Question(translation) {
-  const questionOptions = [translation.b, 'TEST-OPTION']
+function Question(translation, options) {
   return {
     getConcept() {
       return translation.a
@@ -9,7 +8,7 @@ function Question(translation) {
       return translation.b
     },
     getOptions() {
-      return questionOptions
+      return options
     },
     isCorrect(userResponse) {
       return userResponse === translation.b
@@ -17,8 +16,11 @@ function Question(translation) {
   }
 }
 
-export function createQuestion(a, b) {
-  return Question(new Translation(a, b))
+export function createQuestion(a, b, type) {
+  let questionOptions;
+  if (type === "multiple")
+    questionOptions = [b, 'TEST-OPTION']
+  return Question(new Translation(a, b), questionOptions)
 }
 
 export class Translation {

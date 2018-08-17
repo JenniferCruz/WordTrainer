@@ -6,22 +6,18 @@ export default function TakeQuizUseCase() {
  return {
     async startQuiz ({ quizType }) {
       this.isFinished = false
-      this.quiz = new Quiz(await this.loadQuestions())
-      if (quizType === "multiple")
-        this.isMultipleChoice = true
+      this.quiz = new Quiz(await this.loadQuestions(quizType))
     },
     getView() {
       const q = this.quiz;
       if (q.getTotalQuestions() === 0)
         return {}
 
-      const question  = q.getCurrentQuestion()
-
       return {
-        currentQuestion: {content: question.getConcept()},
+        currentQuestion: {content: q.getCurrentQuestion().getConcept()},
         remainingQuestions: q.getRemainingQuestions(),
         totalQuestions: q.getTotalQuestions(),
-        questionOptions: this.isMultipleChoice && q.getCurrentQuestion().getOptions(),
+        questionOptions: q.getCurrentQuestion().getOptions(),
         result: q.getResult(),
         isFinished: this.isFinished
       }
@@ -38,10 +34,10 @@ export default function TakeQuizUseCase() {
     getResult ()  {
       return this.quiz.getResult()
     },
-    async loadQuestions() {
+    async loadQuestions(questionType) {
       const response = await fetch('http://localhost:8080/translations')
       const data = await response.json()
-      return data.map(t => (createQuestion(t.words.de, t.words.en)));
+      return data.map(t => (createQuestion(t.words.de, t.words.en, questionType)));
     }
   }
 }

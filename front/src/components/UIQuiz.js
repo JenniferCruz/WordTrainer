@@ -14,7 +14,7 @@ export class UIQuiz implements UserJourney {
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
     this.questions = questions
 
-    questions = this.questions.map(({content, answer}) => createQuestion(content, answer))
+    questions = this.questions.map(({content, answer}) => createQuestion(content, answer, type))
 
     takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
 

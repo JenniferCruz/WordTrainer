@@ -1,13 +1,13 @@
-import {createQuestion, Question, Text, Translation} from './Question'
+import {createQuestion, Question, Text} from './Question'
 
 describe('Questions tests', () => {
 
   const textA = 'Red'
   const textB = 'Rot'
-  const question = createQuestion(textA, textB)
+
 
   it('User answers a Text Input Question', () => {
-
+    const question = createQuestion(textA, textB)
     expect(question.getConcept()).toBe(textA)
 
     expect(question.isCorrect(textB)).toBe(true)
@@ -15,6 +15,7 @@ describe('Questions tests', () => {
   })
 
   it('User answers a Multiple Choice Question', () => {
+    const question = createQuestion(textA, textB, "multiple")
     expect(question.getOptions()).toContain(textB)
     expect(question.getOptions().length).toBeGreaterThanOrEqual(2)
   })
