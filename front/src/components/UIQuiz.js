@@ -1,27 +1,19 @@
 import React from "react";
 import {createStore, applyMiddleware} from "redux";
-import {Provider} from "react-redux";
-import Enzyme, { mount } from 'enzyme';
-import Adapter from "enzyme-adapter-react-16";
 import {takeTestReducer} from "../reducer";
 import type {UserJourney} from "../testUtils/UserJourney.type";
 import {noQuestionsInQuiz} from "../testUtils/strings";
 import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
 import Quiz from './Quiz'
+import simulateApp from '../testUtils/SimulateApp'
 
 export class UIQuiz implements UserJourney {
 
   initialize(questions) {
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
     this.questions = questions
-
     takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
-    Enzyme.configure({ adapter: new Adapter() });
-    this.component = mount(
-      <Provider store={this.store}>
-        <Quiz/>
-      </Provider>
-    )
+    this.component = simulateApp(<Quiz/>, this.store);
   }
 
   seesQuestion(questionContent) {
