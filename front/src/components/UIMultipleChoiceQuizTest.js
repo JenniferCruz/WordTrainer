@@ -19,8 +19,8 @@ export default class UIMultipleChoiceQuizTest extends UIQuiz {
 
   seesMultipleAnswerChoices() {
     this.component.update()
-    const options = this.component.find(".user-response-option").getElements();
-    expect(options.length).toBeGreaterThanOrEqual(2);
+    const options = this.component.find(".user-response-option").getElements().map(opt => opt.props.value);
+    expect(options.length).toBeGreaterThanOrEqual( 2 );
   }
 
   seesRightAnswerAsChoice( rightAnswer ) {

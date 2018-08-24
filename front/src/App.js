@@ -21,7 +21,7 @@ class App extends Component {
             <h1 className="App-title">Welcome to React</h1>
           </header>
           <div className="App-intro">
-            <Quiz />
+            <Quiz type="multiple"/>
           </div>
         </div>
       </Provider>

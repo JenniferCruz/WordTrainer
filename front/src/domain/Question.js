@@ -17,11 +17,14 @@ function Question(translation, options) {
   }
 }
 
-export function createQuestion(a, b, type) {
-  let questionOptions;
+export function createQuestion(a, b, type, options) {
   if (type === "multiple")
-    questionOptions =  ['TEST-OPTION', b]
-  return Question(new Translation(a, b), questionOptions)
+    options = ensureRightAnswerIsAnOption(options, b)
+  return Question(new Translation(a, b), options)
+}
+
+function ensureRightAnswerIsAnOption(options = [], rightAnswer) {
+  return options.filter( c => c !== rightAnswer).concat(rightAnswer)
 }
 
 export class Translation {
@@ -36,8 +39,16 @@ class WordDatabase {
     const response = await fetch('http://localhost:8080/translations')
     return await response.json()
   }
+  getAnswerOptions( questionType, word, allWords ) {
+    if (questionType === "multiple")
+      return allWords.map(t => t.words.en)
+  }
   async findQuestions( questionType ) {
-    return (await this.findWords()).map(t => (createQuestion(t.words.de, t.words.en, questionType)));
+    const words = await this.findWords()
+    return words.map(t => {
+      const choices = this.getAnswerOptions( questionType, t, words )
+      return createQuestion(t.words.de, t.words.en, questionType, choices)
+    })
   }
 }
 

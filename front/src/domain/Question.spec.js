@@ -15,7 +15,7 @@ describe('Questions tests', () => {
   })
 
   it('User answers a Multiple Choice Question', () => {
-    const question = createQuestion(textA, textB, "multiple")
+    const question = createQuestion(textA, textB, "multiple", ["silly answer"])
     expect(question.getOptions()).toContain(textB)
     expect(question.getOptions().length).toBeGreaterThanOrEqual(2)
   })

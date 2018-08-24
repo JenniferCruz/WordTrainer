@@ -6,7 +6,7 @@ import {noQuestionsInQuiz} from "../testUtils/strings";
 import {takeQuizMiddleware} from "../middleware/TakeQuizMiddleware";
 import Quiz from './Quiz'
 import simulateApp from '../testUtils/SimulateApp'
-import {createQuestion, worldDatabase} from "../domain/Question";
+import {worldDatabase} from "../domain/Question";
 
 export class UIQuiz implements UserJourney {
 
@@ -14,9 +14,9 @@ export class UIQuiz implements UserJourney {
     this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
     this.questions = questions
 
-    questions = this.questions.map(({content, answer}) => createQuestion(content, answer, type))
+    questions = this.questions.map(({content, answer }) => ({"words":{"de":content,"en":answer}}))
 
-    worldDatabase.findQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
+    worldDatabase.findWords = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
 
     this.component = simulateApp(<Quiz type={type}/>, this.store);
   }

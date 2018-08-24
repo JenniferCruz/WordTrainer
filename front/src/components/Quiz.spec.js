@@ -28,7 +28,7 @@ it('UI Quiz: Plays words in multiple choice mode and sees results', async () => 
 
 it('UI Quiz: Sees several choices per question', async () => {
   const user = new UIMultipleChoiceQuizTest()
-  const questions = [{content: "to steal", answer: "klauen", options: ["klagen", "klauen"]}]
+  const questions = [{content: "to steal", answer: "klauen"},{content: "to sue", answer: "klagen"}]
   user.initialize(questions)
 
   await waitForPendingPromises()
