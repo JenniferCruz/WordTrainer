@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 function Question(translation, options) {
   return {
     getConcept() {
@@ -17,7 +19,7 @@ function Question(translation, options) {
 
 export function createQuestion(a, b, type, options) {
   if (type === "multiple")
-    options = ensureRightAnswerIsAnOption(options, b)
+    options = _.shuffle(ensureRightAnswerIsAnOption(options, b))
   return Question(new Translation(a, b), options)
 }
 
