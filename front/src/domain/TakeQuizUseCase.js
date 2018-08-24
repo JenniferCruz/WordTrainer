@@ -31,9 +31,6 @@ export default function TakeQuizUseCase() {
     respond ({userResponse}) {
       this.quiz.correctAnswer(userResponse)
     },
-    getResult ()  {
-      return this.quiz.getResult()
-    },
     async loadQuestions(questionType) {
       return worldDatabase.findQuestions(questionType)
     }

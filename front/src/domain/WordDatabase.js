@@ -19,5 +19,6 @@ class WordDatabase {
   }
 }
 
+// TODO: Singleton is horrible. Use a Factory
 const worldDatabase = new WordDatabase()
 export default worldDatabase
