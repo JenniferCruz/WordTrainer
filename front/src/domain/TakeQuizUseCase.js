@@ -1,6 +1,5 @@
-import fetch from 'node-fetch';
 import Quiz from "./Quiz"
-import {createQuestion} from "./Question";
+import { WordLoader, worldDatabase} from "./Question";
 
 export default function TakeQuizUseCase() {
  return {
@@ -35,9 +34,7 @@ export default function TakeQuizUseCase() {
       return this.quiz.getResult()
     },
     async loadQuestions(questionType) {
-      const response = await fetch('http://localhost:8080/translations')
-      const data = await response.json()
-      return data.map(t => (createQuestion(t.words.de, t.words.en, questionType)));
+      return worldDatabase.findQuestions(questionType)
     }
   }
 }

@@ -3,10 +3,10 @@ import {createStore, applyMiddleware} from "redux";
 import {takeTestReducer} from "../reducer";
 import type {UserJourney} from "../testUtils/UserJourney.type";
 import {noQuestionsInQuiz} from "../testUtils/strings";
-import {takeQuizMiddleware, takeQuizUseCase} from "../middleware/TakeQuizMiddleware";
+import {takeQuizMiddleware} from "../middleware/TakeQuizMiddleware";
 import Quiz from './Quiz'
 import simulateApp from '../testUtils/SimulateApp'
-import {createQuestion} from "../domain/Question";
+import {createQuestion, worldDatabase} from "../domain/Question";
 
 export class UIQuiz implements UserJourney {
 
@@ -16,7 +16,7 @@ export class UIQuiz implements UserJourney {
 
     questions = this.questions.map(({content, answer}) => createQuestion(content, answer, type))
 
-    takeQuizUseCase.loadQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
+    worldDatabase.findQuestions = () => new Promise(resolve => setTimeout(() => resolve(questions), 0));
 
     this.component = simulateApp(<Quiz type={type}/>, this.store);
   }

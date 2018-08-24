@@ -30,22 +30,3 @@ export async function someCorrectAnswers(user) {
   user.seesAndResponds(questions[1].content, "Wrong answer")
   user.seesResults(50)
 }
-
-
-export async function allCorrectAnswersInMultipleChoice(user) {
-  let questions = [
-    {content: "to hurt", answer: "verletzen"},
-    {content: "to testify", answer: "aussagen"},
-    {content: "to move", answer: "ausziehen"},
-  ];
-  user.initialize(questions)
-  await waitForPendingPromises()
-
-  questions.forEach((q, i) => {
-    user.seesRemainingQuestions(questions.length - i)
-    user.seesMultipleAnswerChoices(q)
-    user.seesAndResponds(q.content, q.answer)
-  })
-
-  user.seesResults(100)
-}
