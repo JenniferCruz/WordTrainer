@@ -19,5 +19,11 @@ describe('Questions tests', () => {
     expect(question.getOptions()).toContain(textB)
     expect(question.getOptions().length).toBeGreaterThanOrEqual(2)
   })
+
+  it('User sees right answer as an option only once', () => {
+    const question = createQuestion(textA, textB, "multiple", ["silly answer", textB])
+    const rightAnswer = question.getOptions().filter( opt => opt === textB)
+    expect(rightAnswer.length).toBe(1)
+  })
 })
 
