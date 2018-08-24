@@ -1,5 +1,6 @@
 import Quiz from "./Quiz"
-import { WordLoader, worldDatabase} from "./Question";
+import { WordLoader } from "./Question"
+import worldDatabase from './WordDatabase'
 
 export default function TakeQuizUseCase() {
  return {

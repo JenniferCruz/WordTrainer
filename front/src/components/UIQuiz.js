@@ -6,7 +6,7 @@ import {noQuestionsInQuiz} from "../testUtils/strings";
 import {takeQuizMiddleware} from "../middleware/TakeQuizMiddleware";
 import Quiz from './Quiz'
 import simulateApp from '../testUtils/SimulateApp'
-import {worldDatabase} from "../domain/Question";
+import worldDatabase from "../domain/WordDatabase";
 
 export class UIQuiz implements UserJourney {
 
