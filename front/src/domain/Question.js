@@ -20,7 +20,7 @@ function Question(translation, options) {
 export function createQuestion(a, b, type) {
   let questionOptions;
   if (type === "multiple")
-    questionOptions = worldDatabase.loadedWords.concat(b)
+    questionOptions =  ['TEST-OPTION', b]
   return Question(new Translation(a, b), questionOptions)
 }
 
@@ -32,7 +32,6 @@ export class Translation {
 }
 
 class WordDatabase {
-  loadedWords =  ['TEST-OPTION']
   async findWords() {
     const response = await fetch('http://localhost:8080/translations')
     return await response.json()

@@ -20,17 +20,20 @@ it('UI Quiz: Plays words in multiple choice mode and sees results', async () => 
   await waitForPendingPromises()
   questions.forEach((q, i) => {
     user.seesRemainingQuestions(questions.length - i)
-    //user.seesMultipleAnswerChoices(q)
+    user.seesRightAnswerAsChoice(q.answer)
     user.seesAndResponds(q.content, q.answer)
   })
   user.seesResults(100)
 })
 
-it('UI Quiz: Sees several choices per question', () => {
+it('UI Quiz: Sees several choices per question', async () => {
   const user = new UIMultipleChoiceQuizTest()
+  const questions = [{content: "to steal", answer: "klauen", options: ["klagen", "klauen"]}]
+  user.initialize(questions)
 
+  await waitForPendingPromises()
 
-
+  user.seesMultipleAnswerChoices()
 })
 
 it('UI Quiz: Shows relevant message if no questions are available', async () => {
