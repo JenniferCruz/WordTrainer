@@ -1,29 +1,40 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
+import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
+import { Route, Switch } from 'react-router' // react-router v4
+import { ConnectedRouter } from 'connected-react-router'
 import './App.css';
 import {compose, createStore, applyMiddleware} from "redux";
 import {takeTestReducer} from "./reducer";
 import {Provider} from "react-redux";
-import Quiz from "./components/Quiz";
 import {takeQuizMiddleware} from "./middleware/TakeQuizMiddleware";
+import Intro from "./components/Intro";
+import Quiz from "./components/Quiz";
+import {URLs} from "./testUtils/strings";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const history = createBrowserHistory()
 
-const store = createStore(takeTestReducer, composeEnhancers(), applyMiddleware(takeQuizMiddleware));
+export const store = createStore(connectRouter(history)(takeTestReducer), composeEnhancers(),
+  compose(applyMiddleware(routerMiddleware(history), takeQuizMiddleware)))
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <div className="App-intro">
-            <Quiz type="multiple"/>
+        <ConnectedRouter history={history}>
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo"/>
+              <h1 className="App-title">Welcome to React</h1>
+            </header>
+            <Switch>
+              <Route exact path="/" render={() => (<Intro/>)} />
+              <Route exact path={URLs.multipleChoiceQuiz} render={() => (<Quiz type="multiple"/>)} />
+            </Switch>
           </div>
-        </div>
+        </ConnectedRouter>
       </Provider>
     );
   }
