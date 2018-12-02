@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97c00fdc-f788-4e93-aaae-07738f6c4f78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/front/src/services/WordDatabase.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/WordDatabase.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/.gradle/" />
     <ignored path="$PROJECT_DIR$/backend/build/" />
@@ -80,7 +80,7 @@
           <entry key="bat" value="1" />
           <entry key="gradle" value="1" />
           <entry key="gradlew" value="1" />
-          <entry key="java" value="1" />
+          <entry key="java" value="2" />
           <entry key="js" value="6" />
           <entry key="md" value="4" />
         </counts>
@@ -88,7 +88,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="1" />
+          <entry key="JAVA" value="2" />
           <entry key="JavaScript" value="6" />
           <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="2" />
@@ -98,7 +98,7 @@
         <counts>
           <entry key="gradle" value="31" />
           <entry key="java" value="42" />
-          <entry key="js" value="1" />
+          <entry key="js" value="2" />
           <entry key="md" value="42" />
         </counts>
       </usages-collector>
@@ -106,7 +106,7 @@
         <counts>
           <entry key="Groovy" value="31" />
           <entry key="JAVA" value="42" />
-          <entry key="JavaScript" value="1" />
+          <entry key="JavaScript" value="2" />
           <entry key="Markdown" value="42" />
         </counts>
       </usages-collector>
@@ -191,11 +191,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front/src/App.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="928">
-              <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+            <state relative-caret-position="551">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="33" selection-end-column="18" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -203,7 +203,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/services/WordDatabase.spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="87">
@@ -216,22 +216,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/build.gradle">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/api/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state relative-caret-position="145">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/src/components/Quiz.js">
+        <entry file="file://$PROJECT_DIR$/backend/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="754">
+              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -685,11 +682,11 @@
         <option value="$PROJECT_DIR$/front/src/components/Quiz.spec.js" />
         <option value="$PROJECT_DIR$/front/src/components/Quiz.js" />
         <option value="$PROJECT_DIR$/front/package.json" />
-        <option value="$PROJECT_DIR$/front/src/App.test.js" />
         <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/backend/build.gradle" />
         <option value="$PROJECT_DIR$/backend/src/test/java/api/DoQuizTest.java" />
         <option value="$PROJECT_DIR$/front/src/services/WordDatabase.spec.js" />
+        <option value="$PROJECT_DIR$/front/src/App.test.js" />
       </list>
     </option>
   </component>
@@ -763,6 +760,27 @@
               <item name="WordTrainer" type="b2602c69:ProjectViewProjectNode" />
               <item name="backend" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="WordTrainer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WordTrainer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WordTrainer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -805,7 +823,7 @@
     <property name="SearchEverywhereHistoryKey" value="startQ&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543786822118" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543787013855" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="AndroidDataBinding" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -834,7 +852,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.renders without crashing">
+  <component name="RunManager" selected="Jest.loads Multiple Choice Quiz">
     <configuration name="DoQuizTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WordTrainer_test" />
       <extension name="coverage">
@@ -859,19 +877,6 @@
       <test-file value="$PROJECT_DIR$/front/src/App.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="Gets a list of words from the server (1)" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <working-dir value="$PROJECT_DIR$/front" />
-      <jest-options value="--env=jsdom" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/front/src/services/WordDatabase.spec.js" />
-      <test-names>
-        <test-name value="Gets a list of words from the server" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -879,6 +884,19 @@
       <jest-options value="--env=jsdom" />
       <envs />
       <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="displays a splash screen with Quiz options" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <working-dir value="$PROJECT_DIR$/front" />
+      <jest-options value="--env=jsdom" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/front/src/App.test.js" />
+      <test-names>
+        <test-name value="displays a splash screen with Quiz options" />
+      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="loads Multiple Choice Quiz" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
@@ -916,19 +934,19 @@
     </configuration>
     <list>
       <item itemvalue="Jest.renders without crashing" />
-      <item itemvalue="Jest.Gets a list of words from the server (1)" />
       <item itemvalue="Jest.loads Multiple Choice Quiz" />
       <item itemvalue="Jest.App.test.js" />
       <item itemvalue="Spring Boot.App" />
       <item itemvalue="JUnit.DoQuizTest" />
+      <item itemvalue="Jest.displays a splash screen with Quiz options" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.loads Multiple Choice Quiz" />
+        <item itemvalue="Jest.displays a splash screen with Quiz options" />
         <item itemvalue="Jest.renders without crashing" />
         <item itemvalue="JUnit.DoQuizTest" />
         <item itemvalue="Jest.App.test.js" />
-        <item itemvalue="Jest.loads Multiple Choice Quiz" />
-        <item itemvalue="Jest.Gets a list of words from the server (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -943,20 +961,11 @@
       <option name="presentableId" value="Default" />
       <updated>1543749801563</updated>
       <workItem from="1543749802893" duration="14488000" />
-      <workItem from="1543775481145" duration="6151000" />
+      <workItem from="1543775481145" duration="6379000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="loads_Multiple_Choice_Quiz - 2018.12.02 at 19h 15m 49s.xml">
-      <configuration name="loads Multiple Choice Quiz" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="App_test_js - 2018.12.02 at 19h 17m 44s.xml">
-      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="DoQuizTest - 2018.12.02 at 21h 05m 42s.xml">
-      <configuration name="DoQuizTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DoQuizTest - 2018.12.02 at 21h 09m 49s.xml">
       <configuration name="DoQuizTest" configurationId="JUnit" />
     </history-entry>
@@ -978,15 +987,33 @@
     <history-entry file="renders_without_crashing - 2018.12.02 at 22h 30m 29s.xml">
       <configuration name="renders without crashing" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
+    <history-entry file="renders_without_crashing - 2018.12.02 at 22h 44m 46s.xml">
+      <configuration name="renders without crashing" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="displays_a_splash_screen_with_Quiz_options - 2018.12.02 at 22h 44m 53s.xml">
+      <configuration name="displays a splash screen with Quiz options" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="loads_Multiple_Choice_Quiz - 2018.12.02 at 22h 44m 57s.xml">
+      <configuration name="loads Multiple Choice Quiz" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20639000" />
+    <option name="totallyTimeSpent" value="20867000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="130" y="-8" width="3070" height="1808" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2642522" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2642522" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -996,14 +1023,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32948717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32948717" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32948717" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32948717" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32948717" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -1062,13 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/api/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1291,22 +1311,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="928">
-          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/src/services/WordDatabase.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/api/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/src/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
