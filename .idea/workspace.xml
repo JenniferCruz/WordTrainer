@@ -207,7 +207,7 @@
         <entry file="file://$PROJECT_DIR$/front/src/services/WordDatabase.spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="87">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -805,7 +805,7 @@
     <property name="SearchEverywhereHistoryKey" value="startQ&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543786721893" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543786822118" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="AndroidDataBinding" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -943,7 +943,7 @@
       <option name="presentableId" value="Default" />
       <updated>1543749801563</updated>
       <workItem from="1543749802893" duration="14488000" />
-      <workItem from="1543775481145" duration="6017000" />
+      <workItem from="1543775481145" duration="6151000" />
     </task>
     <servers />
   </component>
@@ -980,7 +980,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20505000" />
+    <option name="totallyTimeSpent" value="20639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="130" y="-8" width="3070" height="1808" extended-state="6" />
@@ -996,14 +996,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32948717" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32948717" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32948717" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32948717" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32948717" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -1304,7 +1304,7 @@
     <entry file="file://$PROJECT_DIR$/front/src/services/WordDatabase.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
