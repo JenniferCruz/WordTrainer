@@ -5,11 +5,11 @@ export default function Intro() {
   return (
     <div className="App-intro">
       <div>
-        <h2>Select a quiz!</h2>
+        <h2 id='greeter'>Select a quiz!</h2>
         <a href={URLs.multipleChoiceQuiz}
-           className={CSSClass.multipleChoiceQuiz}>Multiple Choice Quiz</a>
+           className={CSSClass.multipleChoiceQuiz + " " + CSSClass.quizOption}>Multiple Choice Quiz</a>
         <br/>
-        <a className={CSSClass.inputTextQuiz}>Write your answer Quiz</a>
+        <a className={CSSClass.inputTextQuiz + " " + CSSClass.quizOption}>Write your answer Quiz</a>
       </div>
     </div>
   )
