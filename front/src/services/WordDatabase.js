@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import {createQuestion} from "./Question";
+import _ from "lodash";
 
 class WordDatabase {
   async findWords() {
@@ -14,9 +14,19 @@ class WordDatabase {
     const words = await this.findWords()
     return words.map(t => {
       const choices = this.getAnswerOptions( questionType, t, words )
-      return createQuestion(t.words.de, t.words.en, questionType, choices)
+      let options = _.shuffle(ensureRightAnswerIsAnOption(choices, t.words.en))
+
+      return {
+        concept: t.words.de,
+        answer: t.words.en,
+        options: questionType === "multiple" ? options : null
+      }
     })
   }
+}
+
+function ensureRightAnswerIsAnOption(options = [], rightAnswer) {
+  return options.filter( c => c !== rightAnswer).concat(rightAnswer)
 }
 
 // TODO: Singleton is horrible. Use a Factory

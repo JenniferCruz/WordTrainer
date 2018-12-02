@@ -6,9 +6,8 @@ import { Route, Switch } from 'react-router' // react-router v4
 import { ConnectedRouter } from 'connected-react-router'
 import './App.css';
 import {compose, createStore, applyMiddleware} from "redux";
-import {takeTestReducer} from "./reducer";
+import  takeTestReducer from "./reducer";
 import {Provider} from "react-redux";
-import {takeQuizMiddleware} from "./middleware/TakeQuizMiddleware";
 import Intro from "./components/Intro";
 import Quiz from "./components/Quiz";
 import {URLs} from "./testUtils/strings";
@@ -17,7 +16,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory()
 
 export const store = createStore(connectRouter(history)(takeTestReducer), composeEnhancers(),
-  compose(applyMiddleware(routerMiddleware(history), takeQuizMiddleware)))
+  compose(applyMiddleware(routerMiddleware(history))))
 
 class App extends Component {
   render() {

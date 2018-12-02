@@ -1,10 +1,10 @@
-import worldDatabase from "./WordDatabase";
+import worldDatabase from './WordDatabase'
 import {waitForPendingPromises} from "../testUtils/testUtils";
 
 it("Gets a list of words from the server", async () => {
-  // TODO: This only works if the BE is up. We need a script to automate this.
+  //TODO: This only works if the BE is up. We need a script to automate this.
   const words = await worldDatabase.findWords()
-  waitForPendingPromises()
+  await waitForPendingPromises()
 
   expect(words.length).toBeGreaterThanOrEqual(4)
   const aWord = words[0]

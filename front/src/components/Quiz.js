@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Question from './Question'
 import {CSSClass, noQuestionsInQuiz} from "../testUtils/strings";
+import worldDatabase from "../services/WordDatabase";
 
 class Quiz extends Component{
   componentDidMount() {
-    this.props.dispatch({type:"startQuiz", quizType: this.props.type});
+
+    //TODO: Use Thunk or Redux Sagas
+    worldDatabase.findQuestions(this.props.type).then( questions => {
+      this.props.dispatch({type:"startQuiz", questions });
+    })
+
   }
   handleSubmit(userResponse) {
     this.props.dispatch({type:"respond", userResponse});
-    this.props.dispatch({type:"nextQuestion"});
   }
 
   render() {
@@ -18,7 +23,7 @@ class Quiz extends Component{
     if (!totalQuestions)
       return <div className='quiz-multiple'>
         <h2 className="empty-test-message">{noQuestionsInQuiz}</h2>
-      </div>
+      </div>;
 
     return <div  className='quiz-multiple'>
       { isFinished

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WordTrainer.iml" filepath="$PROJECT_DIR$/.idea/modules/WordTrainer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WordTrainer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/WordTrainer_main.iml" group="WordTrainer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WordTrainer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/WordTrainer_test.iml" group="WordTrainer" />
+      <module fileurl="file://$PROJECT_DIR$/front/front.iml" filepath="$PROJECT_DIR$/front/front.iml" />
+    </modules>
+  </component>
+</project>

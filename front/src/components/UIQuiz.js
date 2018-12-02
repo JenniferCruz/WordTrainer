@@ -1,17 +1,16 @@
 import React from "react";
 import {createStore, applyMiddleware} from "redux";
-import {takeTestReducer} from "../reducer";
+import takeTestReducer from "../reducer";
 import type {UserJourney} from "../testUtils/UserJourney.type";
 import {noQuestionsInQuiz} from "../testUtils/strings";
-import {takeQuizMiddleware} from "../middleware/TakeQuizMiddleware";
 import Quiz from './Quiz'
 import simulateApp from '../testUtils/SimulateApp'
-import worldDatabase from "../domain/WordDatabase";
+import worldDatabase from "../services/WordDatabase";
 
 export class UIQuiz implements UserJourney {
 
   initialize(questions, type = "input") {
-    this.store = createStore(takeTestReducer, applyMiddleware(takeQuizMiddleware))
+    this.store = createStore(takeTestReducer)
     this.questions = questions
 
     questions = this.questions.map(({content, answer }) => ({"words":{"de":content,"en":answer}}))
