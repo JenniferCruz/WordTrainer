@@ -3,8 +3,7 @@ package api;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +12,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 public class DoQuizTest {
 
     private WebDriver driver;
@@ -21,15 +21,11 @@ public class DoQuizTest {
 
     @Before
     public void setUpBrowserInstance() throws Exception {
-        WebDriverManager.chromedriver().setup();
-
-        ChromeOptions options = new ChromeOptions();
+        WebDriverManager.phantomjs().setup();
         // Tested in Google Chrome 59 on Linux. More info on:
         // https://developers.google.com/web/updates/2017/04/headless-chrome
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
 
-        this.driver = new ChromeDriver(options);
+        this.driver = new PhantomJSDriver();
         this.driver.get(url);
     }
 
